@@ -1,13 +1,41 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import './App.css';
 
 import { Icon } from '@iconify/react';
-import React, { useState } from 'react';
+import { NextUIProvider, Switch } from '@nextui-org/react';
+import * as dayjs from 'dayjs';
+import { useState } from 'react';
+
+import { darkTheme } from './main';
 
 function App() {
-  const [mode, setMode] = useState(0);
   return (
     <div className="flex h-screen">
-      <div className="w-96 text-white bg-black h-full">
+      <Sidebar />
+    </div>
+  );
+}
+
+export default App;
+
+const Sidebar = () => {
+  const [mode, setMode] = useState(0);
+  const [fanSpeed, setFanSpeed] = useState(1);
+  return (
+    <NextUIProvider theme={darkTheme}>
+      <div className="w-96 text-white flex flex-col bg-black h-full">
+        <div className="flex space-x-1 justify-center text-6xl">
+          <p className="text-6xl font-light ">{dayjs().format('hh:mm')}</p>
+          <p className="text-6xl font-light text-zinc-700">{dayjs().format('A')}</p>
+        </div>
+        <div className="flex justify-between items-center my-2 px-6">
+          <div>
+            <p className="text-zinc-600 font-bold leading-4 text-lg my-0">Primary</p>
+            <p className="my-0">Water Heater</p>
+          </div>
+          <Switch initialChecked />
+        </div>
         <div>
           <p className="text-9xl font-bold text-center">71°</p>
         </div>
@@ -35,12 +63,24 @@ function App() {
             </li>
           </ul>
         </div>
+        <div className="grow"></div>
+        <div className="flex flex-col items-center">
+          <Bullet onClick={() => setFanSpeed(300)} active={fanSpeed >= 3} />
+          <Bullet onClick={() => setFanSpeed(2)} active={fanSpeed >= 2} />
+          <Bullet onClick={() => setFanSpeed(1)} active={fanSpeed >= 1} />
+          <div className="py-2" />
+          <div
+            className="rounded-full border border-zinc-600 p-2"
+            onClick={() => setFanSpeed(0)}
+          >
+            <FanSpeedIcon speed={fanSpeed} />
+          </div>
+          <p className="text-zinc-500 text-xl">Fan Speed</p>
+        </div>
       </div>
-    </div>
+    </NextUIProvider>
   );
-}
-
-export default App;
+};
 
 const RoundButton = ({
   icon,
@@ -71,3 +111,39 @@ const RoundButton = ({
     </p>
   </div>
 );
+
+const Bullet = ({
+  active = false,
+  onClick,
+}: {
+  onClick?: () => void;
+  active?: boolean;
+}) => (
+  <div
+    onClick={onClick}
+    className={`rounded-full m-1 p-1 border  !border-white hover:opacity-90 duration-200`}
+  >
+    <div
+      className={`rounded-full w-4 h-4 hover:opacity-90 duration-200 ${
+        active ? 'bg-white ' : 'bg-white/0'
+      }`}
+    ></div>
+  </div>
+);
+
+const FanSpeedIcon = ({ speed }: { speed: number }) => {
+  if (speed === 0)
+    return (
+      <Icon
+        className="w-12 h-12 text-zinc-600"
+        icon="material-symbols:mode-fan-off-outline"
+      />
+    );
+
+  return (
+    <Icon
+      icon="material-symbols:mode-fan"
+      className={`w-12 h-12 ${speed > 70 ? 'text-rose-500' : 'text-white'} animate-spin`}
+    />
+  );
+};

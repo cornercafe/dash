@@ -31,7 +31,7 @@ export const darkTheme = createTheme({
 const MyApp = () => {
   const { isDarkMode } = useDarkMode(false);
   return (
-    <NextUIProvider theme={isDarkMode ? darkTheme : lightTheme}>
+    <NextUIProvider theme={lightTheme}>
       <App />
     </NextUIProvider>
   );
