@@ -1,9 +1,43 @@
+import { createTheme, NextUIProvider, Theme } from '@nextui-org/react';
+
+import Dashboard from './Dashboard';
 import { Sidebar } from './layout/Sidebar';
+
+const fonts = {
+  sans: `"Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+  'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;"`,
+};
+
+const sharedTheme: Theme = {
+  theme: {
+    fonts,
+  },
+};
+
+export const lightTheme = createTheme({
+  ...sharedTheme,
+  type: 'light',
+});
+
+export const darkTheme = createTheme({
+  ...sharedTheme,
+  type: 'dark',
+});
 
 function App() {
   return (
     <div className="flex h-screen">
-      <Sidebar />
+      <NextUIProvider theme={darkTheme}>
+        <Sidebar />
+      </NextUIProvider>
+
+      <div className="bg-white grow">
+        <NextUIProvider theme={lightTheme}>
+          <Dashboard />
+        </NextUIProvider>
+      </div>
+
+      <div className="w-96 bg-gray-200"></div>
     </div>
   );
 }
