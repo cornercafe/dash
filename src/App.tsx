@@ -2,6 +2,7 @@ import { createTheme, NextUIProvider, Theme } from '@nextui-org/react';
 
 import Dashboard from './Dashboard';
 import { Sidebar } from './layout/Sidebar';
+import RightBar from './RightBar';
 
 const fonts = {
   sans: `"Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
@@ -37,7 +38,9 @@ function App() {
         </NextUIProvider>
       </div>
 
-      <div className="w-96 bg-gray-200"></div>
+      <div className="w-96 ">
+        <RightBar />
+      </div>
     </div>
   );
 }

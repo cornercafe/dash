@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function Dashboard() {
   return (
-    <div>
+    <div className="my-8">
       <section className="p-4 flex border-b justify-around space-x-4">
         <StatusItem label="Water Level" value="GOOD" />
         <StatusItem label="Powder Status" value="GOOD" />
