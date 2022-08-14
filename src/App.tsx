@@ -27,21 +27,19 @@ export const darkTheme = createTheme({
 
 function App() {
   return (
-    <div className="flex h-screen">
-      <NextUIProvider theme={darkTheme}>
+    <NextUIProvider theme={lightTheme}>
+      <div className="flex h-screen">
         <Sidebar />
-      </NextUIProvider>
 
-      <div className="bg-white grow">
-        <NextUIProvider theme={lightTheme}>
+        <div className="bg-white grow">
           <Dashboard />
-        </NextUIProvider>
-      </div>
+        </div>
 
-      <div className="w-96 ">
-        <RightBar />
+        <div className="w-96 ">
+          <RightBar />
+        </div>
       </div>
-    </div>
+    </NextUIProvider>
   );
 }
 

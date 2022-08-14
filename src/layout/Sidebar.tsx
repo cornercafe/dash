@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Switch } from '@nextui-org/react';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { useState } from 'react';
 
 import { Bullet } from '../components/Bullet';
