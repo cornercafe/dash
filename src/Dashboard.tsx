@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 function Dashboard() {
   return (
-    <div className="my-8">
+    <div className="my-8 p-4">
       <section className="p-4 flex border-b justify-around space-x-4">
         <StatusItem label="Water Level" value="GOOD" />
         <StatusItem label="Powder Status" value="GOOD" />
@@ -23,8 +23,9 @@ function Dashboard() {
           Boost
         </p>
       </section>
-      <section className="p-4 mt-4 flex justify-center items-center">
+      <section className="p-4 mt-4 flex flex-col justify-center items-center">
         <LargeButton />
+        <h2 className="my-4">Dispence Now</h2>
       </section>
     </div>
   );
