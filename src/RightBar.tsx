@@ -3,8 +3,8 @@ import React from 'react';
 
 function RightBar() {
   return (
-    <div className="my-8 p-4">
-      <section className="bg-gray-100 rounded-md p-4">
+    <div className="my-4 p-4">
+      <section className="bg-gray-100 my-4 rounded-md p-4">
         <p className="font-medium text-gray-500">WiFi Connection</p>
         <div className="text-xl flex items-center font-bold">
           <Icon icon="fa6-solid:wifi" className="inline-block mr-2" inline />
@@ -12,6 +12,7 @@ function RightBar() {
           <span className="text-teal-500 font-medium text-sm ml-2"> Connected</span>
         </div>
       </section>
+      <h3>Status</h3>
       <section className="bg-gray-100 rounded-md my-4 p-4">
         <StatusItem
           title="Cups"
@@ -48,6 +49,27 @@ function RightBar() {
           value="353g"
           subtitle="700g"
           icon="icon-park-twotone:face-powder"
+        />
+      </section>
+      <h3>Orders</h3>
+      <section className="bg-gray-100 rounded-md my-4 p-4">
+        <StatusItem
+          title="Total Orders"
+          value="122"
+          subtitle="Today "
+          icon="icon-park-outline:transaction-order"
+        />
+        <StatusItem
+          title="Amount Recieved"
+          value="Rs.1220.00"
+          subtitle=" "
+          icon="bi:cash"
+        />
+        <StatusItem
+          title="Failed Orders"
+          value="3"
+          subtitle="Rs. 30"
+          icon="icon-park:file-failed-one"
         />
       </section>
     </div>
